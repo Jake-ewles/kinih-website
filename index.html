@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kinih — Real Coaching, Real Transformation</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800;900&display=swap">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #14110f; font-family: 'Manrope', 'Segoe UI', system-ui, sans-serif; }
+  html[lang="ar"] body { font-family: 'Tajawal', 'Segoe UI', system-ui, sans-serif; }
+  a { color: #ff5a1f; text-decoration: none; }
+  a:hover { color: #ff7a45; }
+  .h-display { font-family: 'Anton', 'Arial Narrow', sans-serif; font-weight: 400; text-transform: uppercase; letter-spacing: 0.01em; }
+  html[lang="ar"] .h-display { font-family: 'Tajawal', sans-serif; font-weight: 800; text-transform: none; letter-spacing: 0; }
+  .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #ff5a1f; }
+  html[lang="ar"] .eyebrow { letter-spacing: 0; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: #ff5a1f; color: #14110f; font-weight: 800; font-size: 15px; padding: 15px 26px; border-radius: 8px; border: none; cursor: pointer; white-space: nowrap; }
+  .btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: #f5f1ec; font-weight: 700; font-size: 15px; padding: 14px 25px; border-radius: 8px; border: 1.5px solid rgba(245,241,236,0.25); cursor: pointer; white-space: nowrap; }
+  .section { padding: clamp(56px, 8vw, 96px) clamp(24px, 5vw, 80px); }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .card { background: #201b17; border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; }
+  .photo-ph { background: #211c18; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; gap: 10px; }
+  .photo-ph svg { opacity: 0.28; }
+  .photo-ph span { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,241,236,0.32); text-align: center; padding: 0 12px; }
+  html[lang="ar"] .photo-ph span { letter-spacing: 0; }
+  .lang-switch { display: flex; align-items: center; background: #201b17; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 3px; gap: 2px; }
+  .lang-btn { border: none; background: transparent; color: #a89e93; font-size: 12px; font-weight: 700; letter-spacing: 0.03em; padding: 7px 11px; border-radius: 6px; cursor: pointer; font-family: 'Manrope', sans-serif; }
+  .lang-btn.active { background: #ff5a1f; color: #14110f; }
+  .booking-overlay { position: fixed; inset: 0; background: rgba(10,8,7,0.72); display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.2s ease; }
+  .booking-overlay.open { opacity: 1; pointer-events: auto; }
+  .booking-modal { background: #1a1613; border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; max-width: 460px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 32px; position: relative; }
+  .booking-close { position: absolute; top: 16px; right: 16px; background: transparent; border: none; color: #a89e93; cursor: pointer; padding: 4px; }
+  html[lang="ar"] .booking-close { right: auto; left: 16px; }
+  .booking-modal label { display: block; font-size: 13px; font-weight: 700; color: #cfc6ba; margin: 16px 0 6px; }
+  .booking-modal input, .booking-modal select, .booking-modal textarea { width: 100%; background: #14110f; border: 1px solid rgba(255,255,255,0.14); border-radius: 8px; padding: 11px 13px; font-size: 14px; color: #f5f1ec; font-family: 'Manrope', sans-serif; }
+  html[lang="ar"] .booking-modal input, html[lang="ar"] .booking-modal select, html[lang="ar"] .booking-modal textarea { font-family: 'Tajawal', sans-serif; }
+  .booking-modal textarea { resize: vertical; }
+  .booking-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .booking-modal button[type="submit"] { width: 100%; justify-content: center; margin-top: 22px; }
+  .booking-direct { margin-top: 22px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; gap: 8px; }
+  .booking-direct a { font-size: 14px; font-weight: 700; }
+  .booking-note { font-size: 12.5px; color: #867c72; margin-top: 14px; }
+  @media (max-width: 720px) {
+    .nav-links { display: none !important; }
+    .two-path-grid { grid-template-columns: 1fr !important; }
+    .grid-3 { grid-template-columns: 1fr !important; }
+    .grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
+    .footer-grid { grid-template-columns: 1fr !important; }
+  }
+</style>
+</head>
+<body>
+
+<div style="background:#14110f; min-height:100%;">
+
+  <!-- NAV -->
+  <div style="position:sticky; top:0; z-index:20; background:rgba(20,17,15,0.92); backdrop-filter:blur(8px); border-bottom:1px solid rgba(255,255,255,0.07);">
+    <div class="container" style="display:flex; align-items:center; justify-content:space-between; padding:18px clamp(24px,5vw,80px); gap:20px;">
+      <div class="h-display" style="font-size:26px; color:#f5f1ec; letter-spacing:0.03em;">KINIH</div>
+      <div class="nav-links" style="display:flex; align-items:center; gap:32px; font-size:14px; font-weight:600; color:#cfc6ba;">
+        <a href="#paths" data-i18n="nav.programs" style="color:#cfc6ba;">Programs</a>
+        <a href="#coaches" data-i18n="nav.coaches" style="color:#cfc6ba;">Coaches</a>
+        <a href="#results" data-i18n="nav.results" style="color:#cfc6ba;">Results</a>
+        <a href="#pricing" data-i18n="nav.pricing" style="color:#cfc6ba;">Pricing</a>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px;">
+        <div class="lang-switch">
+          <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">FR</button>
+          <button class="lang-btn" data-lang="ar" onclick="setLang('ar')">AR</button>
+        </div>
+        <button class="btn-primary" data-i18n="nav.cta" onclick="openBooking('General inquiry')" style="padding:11px 20px; font-size:13px;">Book Free Assessment</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="section" style="position:relative; overflow:hidden;">
+    <div style="position:absolute; top:-180px; right:-160px; width:560px; height:560px; border-radius:50%; background:radial-gradient(circle, rgba(255,90,31,0.16) 0%, rgba(255,90,31,0) 70%); pointer-events:none;"></div>
+    <div class="container" style="position:relative; display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;">
+      <div style="display:flex; flex-direction:column; gap:22px; min-width:0;">
+        <div class="eyebrow" data-i18n="hero.eyebrow">Kinih Fitness &amp; Coaching</div>
+        <h1 class="h-display" data-i18n="hero.headline" style="font-size:clamp(40px,5.6vw,68px); line-height:0.98; color:#f5f1ec; margin:0;">Real coaching.<br>No guesswork.<br><span style="color:#ff5a1f;">Real transformation.</span></h1>
+        <p data-i18n="hero.subhead" style="font-size:18px; line-height:1.6; color:#a89e93; max-width:520px; margin:0;">Whether you're here to lose weight and get leaner, or bulk up and get stronger, every Kinih member trains with a personal coach on a plan built for their body — and every step of it is visible before you ever walk in.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:8px;">
+          <button class="btn-primary" onclick="openBooking('General inquiry')">
+            <span data-i18n="hero.cta1">Start Your Transformation</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+          <button class="btn-secondary" data-i18n="hero.cta2" onclick="document.getElementById('coaches').scrollIntoView({behavior:'smooth'})">Meet the Coaches</button>
+        </div>
+        <div style="display:flex; gap:32px; margin-top:18px; flex-wrap:wrap;">
+          <div><div class="h-display" style="font-size:28px; color:#f5f1ec;">240+</div><div data-i18n="hero.stat1" style="font-size:13px; color:#867c72;">Members coached</div></div>
+          <div><div class="h-display" style="font-size:28px; color:#f5f1ec;">100%</div><div data-i18n="hero.stat2" style="font-size:13px; color:#867c72;">Coach-guided plans</div></div>
+          <div><div class="h-display" style="font-size:28px; color:#f5f1ec;">0</div><div data-i18n="hero.stat3" style="font-size:13px; color:#867c72;">Hidden fees</div></div>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+        <div class="photo-ph" style="aspect-ratio:3/4; grid-row:span 2; padding:0;">
+          <img src="images/hero-training-floor.png" alt="Kinih training floor" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+        </div>
+        <div class="photo-ph" style="aspect-ratio:1/1; padding:0;">
+          <img src="images/hero-training-action.png" alt="Kinih members training" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+        </div>
+        <div class="photo-ph" style="aspect-ratio:1/1; padding:0;">
+          <img src="images/hero-equipment.png" alt="Kinih equipment" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TWO PATHS -->
+  <div class="section" id="paths" style="background:#1a1613; border-top:1px solid rgba(255,255,255,0.06); border-bottom:1px solid rgba(255,255,255,0.06);">
+    <div class="container">
+      <div style="text-align:center; max-width:640px; margin:0 auto 48px;">
+        <div class="eyebrow" data-i18n="paths.eyebrow" style="text-align:center;">Choose your path</div>
+        <h2 class="h-display" data-i18n="paths.title" style="font-size:clamp(30px,4vw,44px); color:#f5f1ec; margin:12px 0 0;">One gym. Two goals. A coach for both.</h2>
+      </div>
+      <div class="two-path-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+
+        <div class="card" style="padding:36px; display:flex; flex-direction:column; gap:20px;">
+          <div style="width:52px; height:52px; border-radius:10px; background:rgba(255,90,31,0.14); display:flex; align-items:center; justify-content:center;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          </div>
+          <div>
+            <h3 class="h-display" data-i18n="path1.title" style="font-size:28px; color:#f5f1ec; margin:0 0 8px;">Lean &amp; Lighter</h3>
+            <p data-i18n="path1.desc" style="font-size:15px; line-height:1.6; color:#a89e93; margin:0;">A fat-loss program built around sustainable habits — training and nutrition that fit your life, not a crash diet you'll quit in three weeks.</p>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:12px; margin-top:4px;">
+            <div style="display:flex; gap:10px; align-items:flex-start;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="path1.f1" style="font-size:14.5px; color:#d8d0c6;">Personalized nutrition guidance</span>
+            </div>
+            <div style="display:flex; gap:10px; align-items:flex-start;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="path1.f2" style="font-size:14.5px; color:#d8d0c6;">Fat-loss focused training plan</span>
+            </div>
+            <div style="display:flex; gap:10px; align-items:flex-start;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="path1.f3" style="font-size:14.5px; color:#d8d0c6;">Weekly coach check-ins</span>
+            </div>
+          </div>
+          <button class="btn-primary" data-i18n="path1.cta" onclick="openBooking('Lean &amp; Lighter path')" style="margin-top:8px; align-self:flex-start;">Start Lean &amp; Lighter</button>
+        </div>
+
+        <div class="card" style="padding:36px; display:flex; flex-direction:column; gap:20px;">
+          <div style="width:52px; height:52px; border-radius:10px; background:rgba(198,255,61,0.14); display:flex; align-items:center; justify-content:center;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c6ff3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5L17.5 17.5M2 8l2-2 2 2-2 2-2-2zM18 18l2-2 2 2-2 2-2-2zM7 3l1 1-1 1-1-1 1-1zM17 19l1 1-1 1-1-1 1-1z"></path><path d="M4.5 9.5L9.5 4.5M14.5 19.5L19.5 14.5"></path></svg>
+          </div>
+          <div>
+            <h3 class="h-display" data-i18n="path2.title" style="font-size:28px; color:#f5f1ec; margin:0 0 8px;">Stronger &amp; Bigger</h3>
+            <p data-i18n="path2.desc" style="font-size:15px; line-height:1.6; color:#a89e93; margin:0;">A structured mass and strength program with progressive overload you can actually track, plus the calories and recovery to back it up.</p>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:12px; margin-top:4px;">
+            <div style="display:flex; gap:10px; align-items:flex-start;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c6ff3d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="path2.f1" style="font-size:14.5px; color:#d8d0c6;">Muscle-gain nutrition guidance</span>
+            </div>
+            <div style="display:flex; gap:10px; align-items:flex-start;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c6ff3d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="path2.f2" style="font-size:14.5px; color:#d8d0c6;">Progressive strength training plan</span>
+            </div>
+            <div style="display:flex; gap:10px; align-items:flex-start;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c6ff3d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="path2.f3" style="font-size:14.5px; color:#d8d0c6;">Weekly coach check-ins</span>
+            </div>
+          </div>
+          <button class="btn-primary" data-i18n="path2.cta" onclick="openBooking('Stronger &amp; Bigger path')" style="margin-top:8px; align-self:flex-start; background:#c6ff3d;">Start Stronger &amp; Bigger</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- APPROACH TIMELINE -->
+  <div class="section">
+    <div class="container">
+      <div style="text-align:center; max-width:640px; margin:0 auto 56px;">
+        <div class="eyebrow" data-i18n="approach.eyebrow" style="text-align:center;">How it works</div>
+        <h2 class="h-display" data-i18n="approach.title" style="font-size:clamp(30px,4vw,44px); color:#f5f1ec; margin:12px 0 0;">Our coaching approach</h2>
+        <p data-i18n="approach.subtitle" style="font-size:16px; color:#a89e93; margin:14px 0 0;">The same four steps for every member, every time — nothing left to chance.</p>
+      </div>
+      <div class="grid-4" style="display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:24px; position:relative;">
+        <div style="position:absolute; top:24px; left:calc(12.5% + 24px); right:calc(12.5% + 24px); height:2px; background:rgba(255,255,255,0.1); z-index:0;"></div>
+
+        <div style="display:flex; flex-direction:column; gap:16px; position:relative; z-index:1;">
+          <div class="h-display" style="width:48px; height:48px; border-radius:50%; background:#ff5a1f; color:#14110f; display:flex; align-items:center; justify-content:center; font-size:20px;">1</div>
+          <h4 data-i18n="step1.title" style="font-size:17px; font-weight:800; color:#f5f1ec; margin:0;">Assessment</h4>
+          <p data-i18n="step1.desc" style="font-size:14px; line-height:1.6; color:#a89e93; margin:0;">Movement screen, goals, and lifestyle review with a coach — no forms filled out alone.</p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:16px; position:relative; z-index:1;">
+          <div class="h-display" style="width:48px; height:48px; border-radius:50%; background:#26211c; border:2px solid rgba(255,255,255,0.15); color:#f5f1ec; display:flex; align-items:center; justify-content:center; font-size:20px;">2</div>
+          <h4 data-i18n="step2.title" style="font-size:17px; font-weight:800; color:#f5f1ec; margin:0;">Custom Plan</h4>
+          <p data-i18n="step2.desc" style="font-size:14px; line-height:1.6; color:#a89e93; margin:0;">Training and nutrition built around your goal, schedule, and starting point.</p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:16px; position:relative; z-index:1;">
+          <div class="h-display" style="width:48px; height:48px; border-radius:50%; background:#26211c; border:2px solid rgba(255,255,255,0.15); color:#f5f1ec; display:flex; align-items:center; justify-content:center; font-size:20px;">3</div>
+          <h4 data-i18n="step3.title" style="font-size:17px; font-weight:800; color:#f5f1ec; margin:0;">Weekly Check-ins</h4>
+          <p data-i18n="step3.desc" style="font-size:14px; line-height:1.6; color:#a89e93; margin:0;">A real conversation with your coach every week — what's working, what needs to change.</p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:16px; position:relative; z-index:1;">
+          <div class="h-display" style="width:48px; height:48px; border-radius:50%; background:#26211c; border:2px solid rgba(255,255,255,0.15); color:#f5f1ec; display:flex; align-items:center; justify-content:center; font-size:20px;">4</div>
+          <h4 data-i18n="step4.title" style="font-size:17px; font-weight:800; color:#f5f1ec; margin:0;">Progress Tracking</h4>
+          <p data-i18n="step4.desc" style="font-size:14px; line-height:1.6; color:#a89e93; margin:0;">Measurements, lifts, and photos logged and shared with you — always visible, never guessed at.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COACHES -->
+  <div class="section" id="coaches" style="background:#1a1613; border-top:1px solid rgba(255,255,255,0.06); border-bottom:1px solid rgba(255,255,255,0.06);">
+    <div class="container">
+      <div style="text-align:center; max-width:640px; margin:0 auto 48px;">
+        <div class="eyebrow" data-i18n="coaches.eyebrow" style="text-align:center;">The people behind the plan</div>
+        <h2 class="h-display" data-i18n="coaches.title" style="font-size:clamp(30px,4vw,44px); color:#f5f1ec; margin:12px 0 0;">Meet the coaches</h2>
+      </div>
+      <div class="grid-3" style="display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:24px;">
+
+        <div class="card" style="overflow:hidden;">
+          <div class="photo-ph" style="aspect-ratio:4/3; border-radius:0; padding:0;">
+            <img src="images/coach-1.png" alt="Kinih coach Karim Ali" style="width:100%; height:100%; object-fit:cover;">
+          </div>
+          <div style="padding:24px; display:flex; flex-direction:column; gap:8px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
+              <h4 style="font-size:18px; font-weight:800; color:#f5f1ec; margin:0;">Karim Ali</h4>
+              <span data-i18n="coach1.badge" style="font-size:11px; font-weight:700; letter-spacing:0.04em; color:#ff5a1f; background:rgba(255,90,31,0.14); padding:4px 10px; border-radius:20px; white-space:nowrap;">Weight loss</span>
+            </div>
+            <div data-i18n="coach1.years" style="font-size:13px; color:#867c72;">8 years coaching</div>
+          </div>
+        </div>
+
+        <div class="card" style="overflow:hidden;">
+          <div class="photo-ph" style="aspect-ratio:4/3; border-radius:0; padding:0;">
+            <img src="images/coach-2.png" alt="Kinih coach" style="width:100%; height:100%; object-fit:cover;">
+          </div>
+          <div style="padding:24px; display:flex; flex-direction:column; gap:8px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
+              <h4 style="font-size:18px; font-weight:800; color:#f5f1ec; margin:0;">Hanao Ibhraim</h4>
+              <span data-i18n="coach2.badge" style="font-size:11px; font-weight:700; letter-spacing:0.04em; color:#c6ff3d; background:rgba(198,255,61,0.14); padding:4px 10px; border-radius:20px; white-space:nowrap;">Strength &amp; bulk</span>
+            </div>
+            <div data-i18n="coach2.years" style="font-size:13px; color:#867c72;">5 years coaching</div>
+          </div>
+        </div>
+
+        <div class="card" style="overflow:hidden;">
+          <div class="photo-ph" style="aspect-ratio:4/3; border-radius:0; padding:0;">
+            <img src="images/coach-3.png" alt="Kinih coach" style="width:100%; height:100%; object-fit:cover;">
+          </div>
+          <div style="padding:24px; display:flex; flex-direction:column; gap:8px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
+              <h4 style="font-size:18px; font-weight:800; color:#f5f1ec; margin:0;">Djelil Baba</h4>
+              <span data-i18n="coach3.badge" style="font-size:11px; font-weight:700; letter-spacing:0.04em; color:#ff5a1f; background:rgba(255,90,31,0.14); padding:4px 10px; border-radius:20px; white-space:nowrap;">Nutrition</span>
+            </div>
+            <div data-i18n="coach3.years" style="font-size:13px; color:#867c72;">5 years coaching</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="section" id="results">
+    <div class="container">
+      <div style="text-align:center; max-width:640px; margin:0 auto 48px;">
+        <div class="eyebrow" data-i18n="results.eyebrow" style="text-align:center;">Real results</div>
+        <h2 class="h-display" data-i18n="results.title" style="font-size:clamp(30px,4vw,44px); color:#f5f1ec; margin:12px 0 0;">Proof, not promises</h2>
+        <p data-i18n="results.subtitle" style="font-size:16px; color:#a89e93; margin:14px 0 0;">Sample member outcomes — real names and photos shared with member permission.</p>
+      </div>
+      <div class="grid-3" style="display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:24px;">
+
+        <div class="card" style="padding:20px; display:flex; flex-direction:column; gap:16px;">
+          <div class="photo-ph" style="aspect-ratio:4/3; padding:0;">
+            <img src="images/result-1.png" alt="Kinih member training" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+          </div>
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <h4 style="font-size:16px; font-weight:800; color:#f5f1ec; margin:0;">[Member Name]</h4>
+            <span class="h-display" style="font-size:15px; color:#ff5a1f;">-15kg / 4mo</span>
+          </div>
+          <p data-i18n="results.quote1" style="font-size:14px; line-height:1.55; color:#a89e93; margin:0; font-style:italic;">"My coach adjusted the plan every week — I never felt like I was guessing."</p>
+        </div>
+
+        <div class="card" style="padding:20px; display:flex; flex-direction:column; gap:16px;">
+          <div class="photo-ph" style="aspect-ratio:4/3; padding:0;">
+            <img src="images/result-2.png" alt="Kinih member training" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+          </div>
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <h4 style="font-size:16px; font-weight:800; color:#f5f1ec; margin:0;">[Member Name]</h4>
+            <span class="h-display" style="font-size:15px; color:#c6ff3d;">+7kg lean / 6mo</span>
+          </div>
+          <p data-i18n="results.quote2" style="font-size:14px; line-height:1.55; color:#a89e93; margin:0; font-style:italic;">"First program where I could actually see my numbers going up week to week."</p>
+        </div>
+
+        <div class="card" style="padding:20px; display:flex; flex-direction:column; gap:16px;">
+          <div class="photo-ph" style="aspect-ratio:4/3;">
+            <img src="images/result-3.png" alt="Kinih members training" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+          </div>
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <h4 style="font-size:16px; font-weight:800; color:#f5f1ec; margin:0;">[Member Name]</h4>
+            <span class="h-display" style="font-size:15px; color:#ff5a1f;">-11kg / 5mo</span>
+          </div>
+          <p data-i18n="results.quote3" style="font-size:14px; line-height:1.55; color:#a89e93; margin:0; font-style:italic;">"Kinih felt honest from day one — no upsells, just a plan and a coach."</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- INSIDE KINIH -->
+  <div class="section" style="background:#1a1613; border-top:1px solid rgba(255,255,255,0.06); border-bottom:1px solid rgba(255,255,255,0.06);">
+    <div class="container">
+      <div style="text-align:center; max-width:640px; margin:0 auto 48px;">
+        <div class="eyebrow" data-i18n="inside.eyebrow" style="text-align:center;">See before you visit</div>
+        <h2 class="h-display" data-i18n="inside.title" style="font-size:clamp(30px,4vw,44px); color:#f5f1ec; margin:12px 0 0;">Inside Kinih</h2>
+      </div>
+
+      <div class="grid-4" style="display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); grid-template-rows:repeat(2, 160px); gap:14px; margin-bottom:56px;">
+        <div class="photo-ph" style="grid-column:span 2; grid-row:span 2; padding:0;"><img src="images/inside-gym-floor.png" alt="Kinih gym floor" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+        <div class="photo-ph" style="padding:0;"><img src="images/inside-free-weights.png" alt="Kinih free weights" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+        <div class="photo-ph" style="padding:0;"><img src="images/inside-cardio-floor.png" alt="Kinih cardio floor" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+        <div class="photo-ph" style="padding:0;"><img src="images/inside-coaching-area.png" alt="Kinih coaching area" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+        <div class="photo-ph" style="padding:0;"><img src="images/inside-locker-room.png" alt="Kinih locker room and amenities" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div style="display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+          <h3 data-i18n="schedule.title" style="font-size:20px; font-weight:800; color:#f5f1ec; margin:0;">Weekly schedule</h3>
+          <span data-i18n="schedule.note" style="font-size:13px; color:#867c72; font-style:italic;">Gym open every day, 4:00 AM – 10:00 PM. Class times below are a sample.</span>
+        </div>
+        <div class="card" style="overflow-x:auto;">
+          <table style="width:100%; border-collapse:collapse; min-width:640px;">
+            <thead>
+              <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+                <th data-i18n="schedule.hClass" style="text-align:left; padding:14px 20px; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:#867c72; font-weight:700;">Class</th>
+                <th data-i18n="schedule.hMon" style="text-align:left; padding:14px 16px; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:#867c72; font-weight:700;">Mon</th>
+                <th data-i18n="schedule.hWed" style="text-align:left; padding:14px 16px; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:#867c72; font-weight:700;">Wed</th>
+                <th data-i18n="schedule.hFri" style="text-align:left; padding:14px 16px; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:#867c72; font-weight:700;">Fri</th>
+                <th data-i18n="schedule.hSat" style="text-align:left; padding:14px 20px; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:#867c72; font-weight:700;">Sat</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid rgba(255,255,255,0.06);">
+                <td data-i18n="schedule.r1" style="padding:14px 20px; font-size:14px; font-weight:700; color:#f5f1ec;">Fat-Loss Circuit</td>
+                <td style="padding:14px 16px; font-size:14px; color:#a89e93;">[6:00 AM]</td>
+                <td style="padding:14px 16px; font-size:14px; color:#a89e93;">[6:00 AM]</td>
+                <td style="padding:14px 16px; font-size:14px; color:#a89e93;">[6:00 AM]</td>
+                <td style="padding:14px 20px; font-size:14px; color:#a89e93;">[9:00 AM]</td>
+              </tr>
+              <tr style="border-bottom:1px solid rgba(255,255,255,0.06);">
+                <td data-i18n="schedule.r2" style="padding:14px 20px; font-size:14px; font-weight:700; color:#f5f1ec;">Strength Foundations</td>
+                <td style="padding:14px 16px; font-size:14px; color:#a89e93;">[5:00 PM]</td>
+                <td style="padding:14px 16px; font-size:14px; color:#a89e93;">—</td>
+                <td style="padding:14px 16px; font-size:14px; color:#a89e93;">[5:00 PM]</td>
+                <td style="padding:14px 20px; font-size:14px; color:#a89e93;">[11:00 AM]</td>
+              </tr>
+              <tr style="border-bottom:1px solid rgba(255,255,255,0.06);">
+                <td data-i18n="schedule.r3" style="padding:14px 20px; font-size:14px; font-weight:700; color:#f5f1ec;">Coached 1-on-1 Slots</td>
+                <td data-i18n="schedule.byBooking" style="padding:14px 16px; font-size:14px; color:#a89e93;">By booking</td>
+                <td data-i18n="schedule.byBooking" style="padding:14px 16px; font-size:14px; color:#a89e93;">By booking</td>
+                <td data-i18n="schedule.byBooking" style="padding:14px 16px; font-size:14px; color:#a89e93;">By booking</td>
+                <td data-i18n="schedule.byBooking" style="padding:14px 20px; font-size:14px; color:#a89e93;">By booking</td>
+              </tr>
+              <tr>
+                <td data-i18n="schedule.r4" style="padding:14px 20px; font-size:14px; font-weight:700; color:#f5f1ec;">Open Gym</td>
+                <td style="padding:14px 16px; font-size:14px; color:#a89e93;">4:00 AM – 10:00 PM</td>
+                <td style="padding:14px 16px; font-size:14px; color:#a89e93;">4:00 AM – 10:00 PM</td>
+                <td style="padding:14px 16px; font-size:14px; color:#a89e93;">4:00 AM – 10:00 PM</td>
+                <td style="padding:14px 20px; font-size:14px; color:#a89e93;">4:00 AM – 10:00 PM</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICING -->
+  <div class="section" id="pricing">
+    <div class="container">
+      <div style="text-align:center; max-width:640px; margin:0 auto 48px;">
+        <div class="eyebrow" data-i18n="pricing.eyebrow" style="text-align:center;">Simple, honest pricing</div>
+        <h2 class="h-display" data-i18n="pricing.title" style="font-size:clamp(30px,4vw,44px); color:#f5f1ec; margin:12px 0 0;">Pick your level of coaching</h2>
+        <p data-i18n="pricing.subtitle" style="font-size:16px; color:#a89e93; margin:14px 0 0;">Every price shown is everything you pay — no setup fees, no surprise charges.</p>
+      </div>
+      <div class="grid-3" style="display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:24px; align-items:stretch;">
+
+        <div class="card" style="padding:32px; display:flex; flex-direction:column; gap:20px;">
+          <div>
+            <h3 data-i18n="plan1.name" style="font-size:19px; font-weight:800; color:#f5f1ec; margin:0 0 6px;">Self-Guided</h3>
+            <p data-i18n="plan1.tagline" style="font-size:14px; color:#867c72; margin:0;">Train on your own, with the plan.</p>
+          </div>
+          <div><span class="h-display" style="font-size:38px; color:#f5f1ec;">300</span> <span class="h-display" data-i18n="pricing.currency" style="font-size:18px; color:#f5f1ec;">MAD</span><span data-i18n="pricing.perMonth" style="font-size:14px; color:#867c72;">/mo</span></div>
+          <div style="display:flex; flex-direction:column; gap:10px; flex:1;">
+            <div style="display:flex; gap:9px; font-size:14px; color:#d8d0c6;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a89e93" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-i18n="plan1.f1">Full gym access</span></div>
+            <div style="display:flex; gap:9px; font-size:14px; color:#d8d0c6;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a89e93" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-i18n="plan1.f2">Starter training plan</span></div>
+            <div style="display:flex; gap:9px; font-size:14px; color:#d8d0c6;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a89e93" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-i18n="plan1.f3">Monthly progress check-in</span></div>
+          </div>
+          <button class="btn-secondary" data-i18n="plan1.cta" onclick="openBooking('Self-Guided plan')" style="justify-content:center;">Choose Self-Guided</button>
+        </div>
+
+        <div class="card" style="padding:32px; display:flex; flex-direction:column; gap:20px; border:1.5px solid #ff5a1f; position:relative;">
+          <div data-i18n="plan2.badge" style="position:absolute; top:-13px; left:32px; background:#ff5a1f; color:#14110f; font-size:11px; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; padding:5px 12px; border-radius:20px;">Most popular</div>
+          <div>
+            <h3 data-i18n="plan2.name" style="font-size:19px; font-weight:800; color:#f5f1ec; margin:0 0 6px;">Coached</h3>
+            <p data-i18n="plan2.tagline" style="font-size:14px; color:#867c72; margin:0;">A dedicated coach, week after week.</p>
+          </div>
+          <div><span class="h-display" style="font-size:38px; color:#ff5a1f;">500</span> <span class="h-display" data-i18n="pricing.currency" style="font-size:18px; color:#ff5a1f;">MAD</span><span data-i18n="pricing.perMonth" style="font-size:14px; color:#867c72;">/mo</span></div>
+          <div style="display:flex; flex-direction:column; gap:10px; flex:1;">
+            <div style="display:flex; gap:9px; font-size:14px; color:#d8d0c6;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-i18n="plan2.f1">Everything in Self-Guided</span></div>
+            <div style="display:flex; gap:9px; font-size:14px; color:#d8d0c6;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-i18n="plan2.f2">Custom weight-loss or bulk plan</span></div>
+            <div style="display:flex; gap:9px; font-size:14px; color:#d8d0c6;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-i18n="plan2.f3">Weekly coach check-ins</span></div>
+            <div style="display:flex; gap:9px; font-size:14px; color:#d8d0c6;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-i18n="plan2.f4">Nutrition guidance</span></div>
+          </div>
+          <button class="btn-primary" data-i18n="plan2.cta" onclick="openBooking('Coached plan')" style="justify-content:center;">Choose Coached</button>
+        </div>
+
+        <div class="card" style="padding:32px; display:flex; flex-direction:column; gap:20px;">
+          <div>
+            <h3 data-i18n="plan3.name" style="font-size:19px; font-weight:800; color:#f5f1ec; margin:0 0 6px;">Premium 1-on-1</h3>
+            <p data-i18n="plan3.tagline" style="font-size:14px; color:#867c72; margin:0;">Every session, coached in person.</p>
+          </div>
+          <div><span class="h-display" style="font-size:38px; color:#f5f1ec;">1000</span> <span class="h-display" data-i18n="pricing.currency" style="font-size:18px; color:#f5f1ec;">MAD</span><span data-i18n="pricing.perMonth" style="font-size:14px; color:#867c72;">/mo</span></div>
+          <div style="display:flex; flex-direction:column; gap:10px; flex:1;">
+            <div style="display:flex; gap:9px; font-size:14px; color:#d8d0c6;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a89e93" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-i18n="plan3.f1">Everything in Coached</span></div>
+            <div style="display:flex; gap:9px; font-size:14px; color:#d8d0c6;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a89e93" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-i18n="plan3.f2">In-person 1-on-1 sessions</span></div>
+            <div style="display:flex; gap:9px; font-size:14px; color:#d8d0c6;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a89e93" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-i18n="plan3.f3">Direct coach messaging</span></div>
+            <div style="display:flex; gap:9px; font-size:14px; color:#d8d0c6;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a89e93" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-i18n="plan3.f4">Priority scheduling</span></div>
+          </div>
+          <button class="btn-secondary" data-i18n="plan3.cta" onclick="openBooking('Premium 1-on-1 plan')" style="justify-content:center;">Choose Premium</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="section" style="background:#ff5a1f; padding-top:64px; padding-bottom:64px;">
+    <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
+      <div>
+        <h2 class="h-display" data-i18n="finalcta.title" style="font-size:clamp(26px,3.4vw,38px); color:#14110f; margin:0 0 8px;">Come see it for yourself.</h2>
+        <p data-i18n="finalcta.subtitle" style="font-size:16px; color:rgba(20,17,15,0.75); margin:0;">A free assessment with a real coach — no pressure, no commitment.</p>
+      </div>
+      <button onclick="openBooking('General inquiry')" style="display:inline-flex; align-items:center; gap:8px; background:#14110f; color:#f5f1ec; font-weight:800; font-size:15px; padding:16px 30px; border-radius:8px; border:none; cursor:pointer; white-space:nowrap;">
+        <span data-i18n="finalcta.button">Book a Free Assessment</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="section" style="padding-top:56px; padding-bottom:40px;">
+    <div class="container">
+      <div class="footer-grid" style="display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:40px; padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,0.08);">
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div class="h-display" style="font-size:24px; color:#f5f1ec;">KINIH</div>
+          <p data-i18n="footer.tagline" style="font-size:14px; line-height:1.6; color:#867c72; max-width:280px; margin:0;">A fitness gym and coaching studio for anyone looking to lose weight or build muscle — with a real coach, and nothing hidden.</p>
+          <div style="display:flex; gap:12px; margin-top:4px;">
+            <div style="width:36px; height:36px; border-radius:8px; background:#201b17; display:flex; align-items:center; justify-content:center;">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#cfc6ba" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1"></circle></svg>
+            </div>
+            <div style="width:36px; height:36px; border-radius:8px; background:#201b17; display:flex; align-items:center; justify-content:center;">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#cfc6ba" stroke-width="1.8"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div data-i18n="footer.explore" style="font-size:13px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#867c72;">Explore</div>
+          <a href="#paths" data-i18n="nav.programs" style="font-size:14px; color:#cfc6ba;">Programs</a>
+          <a href="#coaches" data-i18n="nav.coaches" style="font-size:14px; color:#cfc6ba;">Coaches</a>
+          <a href="#results" data-i18n="nav.results" style="font-size:14px; color:#cfc6ba;">Results</a>
+          <a href="#pricing" data-i18n="nav.pricing" style="font-size:14px; color:#cfc6ba;">Pricing</a>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div data-i18n="footer.visit" style="font-size:13px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#867c72;">Visit</div>
+          <div style="font-size:14px; color:#cfc6ba;">1034 Rue des Orangers, Aïn Sebaâ, Casablanca, Morocco</div>
+          <div style="font-size:14px; color:#cfc6ba; direction:ltr; unicode-bidi:isolate;">+212 6 45 67 85 94</div>
+          <div style="font-size:14px; color:#cfc6ba;">kinih@yahoo.com</div>
+          <div data-i18n="footer.hours" style="font-size:14px; color:#cfc6ba;">Every day, 4:00 AM – 10:00 PM</div>
+        </div>
+      </div>
+      <div data-i18n="footer.copyright" style="padding-top:24px; font-size:13px; color:#605850;">© 2026 Kinih. All rights reserved.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="booking-overlay" id="bookingOverlay" onclick="if(event.target===this) closeBooking()">
+  <div class="booking-modal" role="dialog" aria-modal="true" aria-labelledby="bookingTitle">
+    <button class="booking-close" onclick="closeBooking()" aria-label="Close">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <div id="bookingFormView">
+      <h3 id="bookingTitle" class="h-display" data-i18n="booking.title" style="font-size:24px; color:#f5f1ec; margin:0 0 10px; padding-right:28px;">Book Your Free Assessment</h3>
+      <p data-i18n="booking.subtitle" style="font-size:14px; line-height:1.55; color:#a89e93; margin:0;">Tell us what you're looking for and pick a time that works for you.</p>
+      <form id="bookingForm" onsubmit="submitBooking(event)">
+        <input type="hidden" id="bookingContext">
+        <label for="bookingName" data-i18n="booking.labelName">Full name</label>
+        <input type="text" id="bookingName" required>
+        <label for="bookingPhone" data-i18n="booking.labelPhone">Phone number</label>
+        <input type="tel" id="bookingPhone" required>
+        <div class="booking-two-col">
+          <div>
+            <label for="bookingDate" data-i18n="booking.labelDate">Preferred date</label>
+            <input type="date" id="bookingDate" required>
+          </div>
+          <div>
+            <label for="bookingTime" data-i18n="booking.labelTime">Preferred time</label>
+            <input type="time" id="bookingTime" required>
+          </div>
+        </div>
+        <label for="bookingGoal" data-i18n="booking.labelGoal">What are you looking for?</label>
+        <select id="bookingGoal">
+          <option data-i18n="booking.goalOption1">Lose weight / get leaner</option>
+          <option data-i18n="booking.goalOption2">Build muscle / get stronger</option>
+          <option data-i18n="booking.goalOption3">Not sure yet</option>
+        </select>
+        <label for="bookingNotes" data-i18n="booking.labelNotes">Anything else you'd like us to know? (optional)</label>
+        <textarea id="bookingNotes" rows="3"></textarea>
+        <button type="submit" class="btn-primary" data-i18n="booking.submit">Send Request</button>
+      </form>
+      <div class="booking-direct">
+        <div data-i18n="booking.directTitle" style="font-size:13px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:#867c72;">Prefer to reach us directly?</div>
+        <a href="tel:+212645678594" style="direction:ltr; display:inline-block;"><span data-i18n="booking.callUs">Call us</span> — +212 6 45 67 85 94</a>
+        <a href="mailto:kinih@yahoo.com"><span data-i18n="booking.emailUs">Email us</span> — kinih@yahoo.com</a>
+      </div>
+      <p class="booking-note" data-i18n="booking.noPayment">No online payment needed — you can pay when you visit the gym.</p>
+    </div>
+    <div id="bookingSuccessView" style="display:none; text-align:center;">
+      <div style="width:56px; height:56px; border-radius:50%; background:rgba(198,255,61,0.14); display:flex; align-items:center; justify-content:center; margin:4px auto 18px;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c6ff3d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <h3 class="h-display" data-i18n="booking.successTitle" style="font-size:22px; color:#f5f1ec; margin:0 0 8px;">Request received!</h3>
+      <p data-i18n="booking.successSubtitle" style="font-size:14px; line-height:1.55; color:#a89e93; margin:0 0 20px;">Show this confirmation at the front desk when you arrive at Kinih.</p>
+      <div style="background:#14110f; border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:20px; text-align:left; display:flex; flex-direction:column; gap:10px;">
+        <div style="display:flex; align-items:center; justify-content:space-between; padding-bottom:10px; border-bottom:1px dashed rgba(255,255,255,0.14);">
+          <span data-i18n="booking.refLabel" style="font-size:12px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; color:#867c72;">Reference code</span>
+          <span id="bookingRefCode" class="h-display" style="font-size:18px; color:#ff5a1f;">KINIH-000000</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; font-size:14px;">
+          <span data-i18n="booking.labelName" style="color:#867c72;">Full name</span>
+          <span id="bookingSummaryName" style="color:#f5f1ec; font-weight:700;"></span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; font-size:14px;">
+          <span data-i18n="booking.labelDate" style="color:#867c72;">Preferred date</span>
+          <span id="bookingSummaryDate" style="color:#f5f1ec; font-weight:700;"></span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; font-size:14px;">
+          <span data-i18n="booking.labelTime" style="color:#867c72;">Preferred time</span>
+          <span id="bookingSummaryTime" style="color:#f5f1ec; font-weight:700;"></span>
+        </div>
+      </div>
+      <p class="booking-note" data-i18n="booking.screenshotNote" style="text-align:center;">Take a screenshot of this confirmation to keep as your proof.</p>
+      <button type="button" class="btn-primary" onclick="closeBooking()" data-i18n="booking.doneButton" style="width:100%; justify-content:center; margin-top:6px;">Done</button>
+    </div>
+  </div>
+</div>
+
+<script>
+var translations = {
+  en: {
+    "nav.programs": "Programs", "nav.coaches": "Coaches", "nav.results": "Results", "nav.pricing": "Pricing",
+    "nav.cta": "Book Free Assessment",
+    "hero.eyebrow": "Kinih Fitness &amp; Coaching",
+    "hero.headline": "Real coaching.<br>No guesswork.<br><span style=\"color:#ff5a1f;\">Real transformation.</span>",
+    "hero.subhead": "Whether you're here to lose weight and get leaner, or bulk up and get stronger, every Kinih member trains with a personal coach on a plan built for their body — and every step of it is visible before you ever walk in.",
+    "hero.cta1": "Start Your Transformation", "hero.cta2": "Meet the Coaches",
+    "hero.stat1": "Members coached", "hero.stat2": "Coach-guided plans", "hero.stat3": "Hidden fees",
+    "hero.photo1": "Photo — Training floor", "hero.photo2": "Photo — Coach session", "hero.photo3": "Photo — Equipment",
+    "paths.eyebrow": "Choose your path", "paths.title": "One gym. Two goals. A coach for both.",
+    "path1.title": "Lean &amp; Lighter", "path1.desc": "A fat-loss program built around sustainable habits — training and nutrition that fit your life, not a crash diet you'll quit in three weeks.",
+    "path1.f1": "Personalized nutrition guidance", "path1.f2": "Fat-loss focused training plan", "path1.f3": "Weekly coach check-ins", "path1.cta": "Start Lean &amp; Lighter",
+    "path2.title": "Stronger &amp; Bigger", "path2.desc": "A structured mass and strength program with progressive overload you can actually track, plus the calories and recovery to back it up.",
+    "path2.f1": "Muscle-gain nutrition guidance", "path2.f2": "Progressive strength training plan", "path2.f3": "Weekly coach check-ins", "path2.cta": "Start Stronger &amp; Bigger",
+    "approach.eyebrow": "How it works", "approach.title": "Our coaching approach", "approach.subtitle": "The same four steps for every member, every time — nothing left to chance.",
+    "step1.title": "Assessment", "step1.desc": "Movement screen, goals, and lifestyle review with a coach — no forms filled out alone.",
+    "step2.title": "Custom Plan", "step2.desc": "Training and nutrition built around your goal, schedule, and starting point.",
+    "step3.title": "Weekly Check-ins", "step3.desc": "A real conversation with your coach every week — what's working, what needs to change.",
+    "step4.title": "Progress Tracking", "step4.desc": "Measurements, lifts, and photos logged and shared with you — always visible, never guessed at.",
+    "coaches.eyebrow": "The people behind the plan", "coaches.title": "Meet the coaches", "coaches.photoLabel": "Photo — Coach",
+    "coach1.badge": "Weight loss", "coach1.years": "8 years coaching",
+    "coach2.badge": "Strength &amp; bulk", "coach2.years": "5 years coaching",
+    "coach3.badge": "Nutrition", "coach3.years": "5 years coaching",
+    "results.eyebrow": "Real results", "results.title": "Proof, not promises", "results.subtitle": "Sample member outcomes — real names and photos shared with member permission.",
+    "results.photo1": "Photo — Member training", "results.photo2": "Photo — Member training", "results.photo3": "Photo — Member training",
+    "results.quote1": "“My coach adjusted the plan every week — I never felt like I was guessing.”",
+    "results.quote2": "“First program where I could actually see my numbers going up week to week.”",
+    "results.quote3": "“Kinih felt honest from day one — no upsells, just a plan and a coach.”",
+    "inside.eyebrow": "See before you visit", "inside.title": "Inside Kinih",
+    "inside.gal1": "Photo — Gym floor", "inside.gal2": "Free weights", "inside.gal3": "Cardio floor", "inside.gal4": "Coach 1:1 area", "inside.gal5": "Locker room",
+    "schedule.title": "Weekly schedule", "schedule.note": "Gym open every day, 4:00 AM – 10:00 PM. Class times below are a sample.",
+    "schedule.hClass": "Class", "schedule.hMon": "Mon", "schedule.hWed": "Wed", "schedule.hFri": "Fri", "schedule.hSat": "Sat",
+    "schedule.r1": "Fat-Loss Circuit", "schedule.r2": "Strength Foundations", "schedule.r3": "Coached 1-on-1 Slots", "schedule.r4": "Open Gym", "schedule.byBooking": "By booking",
+    "pricing.eyebrow": "Simple, honest pricing", "pricing.title": "Pick your level of coaching", "pricing.subtitle": "Every price shown is everything you pay — no setup fees, no surprise charges.",
+    "pricing.currency": "MAD", "pricing.perMonth": "/mo",
+    "plan1.name": "Self-Guided", "plan1.tagline": "Train on your own, with the plan.", "plan1.f1": "Full gym access", "plan1.f2": "Starter training plan", "plan1.f3": "Monthly progress check-in", "plan1.cta": "Choose Self-Guided",
+    "plan2.badge": "Most popular", "plan2.name": "Coached", "plan2.tagline": "A dedicated coach, week after week.", "plan2.f1": "Everything in Self-Guided", "plan2.f2": "Custom weight-loss or bulk plan", "plan2.f3": "Weekly coach check-ins", "plan2.f4": "Nutrition guidance", "plan2.cta": "Choose Coached",
+    "plan3.name": "Premium 1-on-1", "plan3.tagline": "Every session, coached in person.", "plan3.f1": "Everything in Coached", "plan3.f2": "In-person 1-on-1 sessions", "plan3.f3": "Direct coach messaging", "plan3.f4": "Priority scheduling", "plan3.cta": "Choose Premium",
+    "finalcta.title": "Come see it for yourself.", "finalcta.subtitle": "A free assessment with a real coach — no pressure, no commitment.", "finalcta.button": "Book a Free Assessment",
+    "footer.tagline": "A fitness gym and coaching studio for anyone looking to lose weight or build muscle — with a real coach, and nothing hidden.",
+    "footer.explore": "Explore", "footer.visit": "Visit", "footer.hours": "Every day, 4:00 AM – 10:00 PM",
+    "footer.copyright": "© 2026 Kinih. All rights reserved.",
+    "booking.title": "Book Your Free Assessment", "booking.subtitle": "Tell us what you're looking for and pick a date and time that work for you — no payment needed online, you can pay when you visit.",
+    "booking.labelName": "Full name", "booking.labelPhone": "Phone number", "booking.labelDate": "Preferred date", "booking.labelTime": "Preferred time",
+    "booking.labelGoal": "What are you looking for?", "booking.goalOption1": "Lose weight / get leaner", "booking.goalOption2": "Build muscle / get stronger", "booking.goalOption3": "Not sure yet",
+    "booking.labelNotes": "Anything else you'd like us to know? (optional)", "booking.submit": "Send Request",
+    "booking.directTitle": "Prefer to reach us directly?", "booking.callUs": "Call us", "booking.emailUs": "Email us",
+    "booking.noPayment": "No online payment needed — you can pay when you visit the gym.",
+    "booking.successTitle": "Request received!", "booking.successSubtitle": "Show this confirmation at the front desk when you arrive at Kinih.",
+    "booking.refLabel": "Reference code", "booking.screenshotNote": "Take a screenshot of this confirmation to keep as your proof.", "booking.doneButton": "Done"
+  },
+  fr: {
+    "nav.programs": "Programmes", "nav.coaches": "Coachs", "nav.results": "Résultats", "nav.pricing": "Tarifs",
+    "nav.cta": "Réserver un bilan gratuit",
+    "hero.eyebrow": "Kinih Fitness &amp; Coaching",
+    "hero.headline": "Un vrai coaching.<br>Zéro improvisation.<br><span style=\"color:#ff5a1f;\">Une vraie transformation.</span>",
+    "hero.subhead": "Que vous soyez là pour perdre du poids et vous affiner, ou pour prendre du muscle et gagner en force, chaque membre Kinih s'entraîne avec un coach personnel sur un plan pensé pour son corps — et tout est visible avant même que vous ne mettiez les pieds dans la salle.",
+    "hero.cta1": "Commencer ma transformation", "hero.cta2": "Découvrir les coachs",
+    "hero.stat1": "Membres coachés", "hero.stat2": "Plans suivis par un coach", "hero.stat3": "Frais cachés",
+    "hero.photo1": "Photo — Espace d'entraînement", "hero.photo2": "Photo — Séance avec un coach", "hero.photo3": "Photo — Équipement",
+    "paths.eyebrow": "Choisissez votre objectif", "paths.title": "Une salle. Deux objectifs. Un coach pour chacun.",
+    "path1.title": "Perte de poids", "path1.desc": "Un programme de perte de graisse basé sur des habitudes durables — un entraînement et une alimentation adaptés à votre vie, pas un régime express que vous abandonnerez en trois semaines.",
+    "path1.f1": "Suivi nutritionnel personnalisé", "path1.f2": "Plan d'entraînement axé perte de graisse", "path1.f3": "Point hebdomadaire avec votre coach", "path1.cta": "Commencer ce programme",
+    "path2.title": "Prise de muscle", "path2.desc": "Un programme structuré de force et de masse avec une surcharge progressive que vous pouvez vraiment suivre, ainsi que les calories et la récupération nécessaires pour progresser.",
+    "path2.f1": "Suivi nutritionnel pour la prise de muscle", "path2.f2": "Plan d'entraînement en force progressive", "path2.f3": "Point hebdomadaire avec votre coach", "path2.cta": "Commencer ce programme",
+    "approach.eyebrow": "Comment ça marche", "approach.title": "Notre méthode de coaching", "approach.subtitle": "Les quatre mêmes étapes pour chaque membre, à chaque fois — rien n'est laissé au hasard.",
+    "step1.title": "Bilan initial", "step1.desc": "Évaluation de la mobilité, des objectifs et du mode de vie avec un coach — aucun formulaire à remplir seul.",
+    "step2.title": "Plan sur mesure", "step2.desc": "Entraînement et alimentation construits autour de votre objectif, votre emploi du temps et votre point de départ.",
+    "step3.title": "Suivis hebdomadaires", "step3.desc": "Un vrai échange avec votre coach chaque semaine — ce qui fonctionne, ce qu'il faut ajuster.",
+    "step4.title": "Suivi des progrès", "step4.desc": "Mesures, performances et photos enregistrées et partagées avec vous — toujours visibles, jamais devinées.",
+    "coaches.eyebrow": "Les personnes derrière le programme", "coaches.title": "Découvrez les coachs", "coaches.photoLabel": "Photo — Coach",
+    "coach1.badge": "Perte de poids", "coach1.years": "8 ans d'expérience",
+    "coach2.badge": "Force &amp; prise de masse", "coach2.years": "5 ans d'expérience",
+    "coach3.badge": "Nutrition", "coach3.years": "5 ans d'expérience",
+    "results.eyebrow": "Résultats réels", "results.title": "Des preuves, pas des promesses", "results.subtitle": "Exemples de résultats de membres — noms et photos réels partagés avec leur accord.",
+    "results.photo1": "Photo — Membre à l'entraînement", "results.photo2": "Photo — Membre à l'entraînement", "results.photo3": "Photo — Membre à l'entraînement",
+    "results.quote1": "« Mon coach ajustait le plan chaque semaine — je n'ai jamais eu l'impression d'improviser. »",
+    "results.quote2": "« Le premier programme où j'ai vraiment vu mes performances progresser semaine après semaine. »",
+    "results.quote3": "« Kinih a été honnête dès le départ — pas de vente forcée, juste un plan et un coach. »",
+    "inside.eyebrow": "À voir avant votre visite", "inside.title": "L'intérieur de Kinih",
+    "inside.gal1": "Photo — Espace d'entraînement", "inside.gal2": "Poids libres", "inside.gal3": "Espace cardio", "inside.gal4": "Espace coaching individuel", "inside.gal5": "Vestiaires",
+    "schedule.title": "Planning hebdomadaire", "schedule.note": "Salle ouverte tous les jours, 4h00 – 22h00. Les horaires de cours ci-dessous sont indicatifs.",
+    "schedule.hClass": "Cours", "schedule.hMon": "Lun", "schedule.hWed": "Mer", "schedule.hFri": "Ven", "schedule.hSat": "Sam",
+    "schedule.r1": "Circuit perte de graisse", "schedule.r2": "Fondamentaux de force", "schedule.r3": "Créneaux coaching individuel", "schedule.r4": "Salle libre", "schedule.byBooking": "Sur réservation",
+    "pricing.eyebrow": "Des tarifs simples et honnêtes", "pricing.title": "Choisissez votre niveau de coaching", "pricing.subtitle": "Le prix affiché est le prix payé — aucun frais d'inscription, aucune surprise.",
+    "pricing.currency": "DH", "pricing.perMonth": "/mois",
+    "plan1.name": "Autonome", "plan1.tagline": "Entraînez-vous seul, avec le plan.", "plan1.f1": "Accès complet à la salle", "plan1.f2": "Plan d'entraînement de départ", "plan1.f3": "Bilan de progrès mensuel", "plan1.cta": "Choisir Autonome",
+    "plan2.badge": "Le plus populaire", "plan2.name": "Coaché", "plan2.tagline": "Un coach dédié, semaine après semaine.", "plan2.f1": "Tout ce qui est inclus dans Autonome", "plan2.f2": "Plan personnalisé perte de poids ou prise de masse", "plan2.f3": "Point hebdomadaire avec votre coach", "plan2.f4": "Suivi nutritionnel", "plan2.cta": "Choisir Coaché",
+    "plan3.name": "Premium individuel", "plan3.tagline": "Chaque séance, coachée en personne.", "plan3.f1": "Tout ce qui est inclus dans Coaché", "plan3.f2": "Séances individuelles en présentiel", "plan3.f3": "Messagerie directe avec le coach", "plan3.f4": "Réservation prioritaire", "plan3.cta": "Choisir Premium",
+    "finalcta.title": "Venez le constater par vous-même.", "finalcta.subtitle": "Un bilan gratuit avec un vrai coach — sans pression, sans engagement.", "finalcta.button": "Réserver un bilan gratuit",
+    "footer.tagline": "Une salle de sport et un centre de coaching pour toute personne souhaitant perdre du poids ou prendre du muscle — avec un vrai coach, et rien de caché.",
+    "footer.explore": "Explorer", "footer.visit": "Nous rendre visite", "footer.hours": "Tous les jours, 4h00 – 22h00",
+    "footer.copyright": "© 2026 Kinih. Tous droits réservés.",
+    "booking.title": "Réservez votre bilan gratuit", "booking.subtitle": "Dites-nous ce que vous recherchez et choisissez une date et une heure qui vous conviennent — aucun paiement en ligne requis, vous payez sur place.",
+    "booking.labelName": "Nom complet", "booking.labelPhone": "Numéro de téléphone", "booking.labelDate": "Date souhaitée", "booking.labelTime": "Heure souhaitée",
+    "booking.labelGoal": "Que recherchez-vous ?", "booking.goalOption1": "Perdre du poids / m'affiner", "booking.goalOption2": "Prendre du muscle / gagner en force", "booking.goalOption3": "Je ne sais pas encore",
+    "booking.labelNotes": "Autre chose à nous indiquer ? (facultatif)", "booking.submit": "Envoyer la demande",
+    "booking.directTitle": "Vous préférez nous contacter directement ?", "booking.callUs": "Appelez-nous", "booking.emailUs": "Écrivez-nous",
+    "booking.noPayment": "Aucun paiement en ligne requis — vous payez lors de votre visite à la salle.",
+    "booking.successTitle": "Demande reçue !", "booking.successSubtitle": "Montrez cette confirmation à l'accueil lors de votre arrivée chez Kinih.",
+    "booking.refLabel": "Code de référence", "booking.screenshotNote": "Faites une capture d'écran de cette confirmation à garder comme preuve.", "booking.doneButton": "Terminé"
+  },
+  ar: {
+    "nav.programs": "البرامج", "nav.coaches": "المدربون", "nav.results": "النتائج", "nav.pricing": "الأسعار",
+    "nav.cta": "احجز تقييمًا مجانيًا",
+    "hero.eyebrow": "كينيه للياقة البدنية والتدريب",
+    "hero.headline": "تدريب حقيقي.<br>بلا تخمين.<br><span style=\"color:#ff5a1f;\">تحول حقيقي.</span>",
+    "hero.subhead": "سواء كنت هنا لفقدان الوزن والحصول على جسم أنحف، أو لبناء العضلات وزيادة القوة، كل عضو في كينيه يتدرب مع مدرب شخصي على خطة مصممة لجسمه — وكل خطوة فيها مرئية لك قبل أن تدخل الصالة.",
+    "hero.cta1": "ابدأ تحولك الآن", "hero.cta2": "تعرف على المدربين",
+    "hero.stat1": "عضو تم تدريبه", "hero.stat2": "من الخطط بإشراف مدرب", "hero.stat3": "رسوم خفية",
+    "hero.photo1": "صورة — أرضية التدريب", "hero.photo2": "صورة — جلسة مع المدرب", "hero.photo3": "صورة — المعدات",
+    "paths.eyebrow": "اختر مسارك", "paths.title": "صالة واحدة. هدفان. مدرب لكل هدف.",
+    "path1.title": "أخف وزنًا", "path1.desc": "برنامج لفقدان الدهون مبني على عادات مستدامة — تدريب وتغذية يتناسبان مع حياتك، وليس حمية قاسية ستتخلى عنها خلال ثلاثة أسابيع.",
+    "path1.f1": "إرشاد غذائي شخصي", "path1.f2": "خطة تدريب مخصصة لفقدان الدهون", "path1.f3": "متابعة أسبوعية مع المدرب", "path1.cta": "ابدأ هذا البرنامج",
+    "path2.title": "أقوى وأضخم", "path2.desc": "برنامج منظم لبناء القوة والكتلة العضلية بزيادة تدريجية في الحمل يمكنك تتبعها فعليًا، إضافة إلى السعرات الحرارية والراحة اللازمة لدعم التقدم.",
+    "path2.f1": "إرشاد غذائي لزيادة الكتلة العضلية", "path2.f2": "خطة تدريب قوة تصاعدية", "path2.f3": "متابعة أسبوعية مع المدرب", "path2.cta": "ابدأ هذا البرنامج",
+    "approach.eyebrow": "كيف نعمل", "approach.title": "منهجية التدريب لدينا", "approach.subtitle": "نفس الخطوات الأربع لكل عضو، في كل مرة — لا شيء يُترك للصدفة.",
+    "step1.title": "التقييم", "step1.desc": "فحص للحركة، ومراجعة للأهداف ونمط الحياة مع مدرب — لا استمارات تُملأ بمفردك.",
+    "step2.title": "خطة مخصصة", "step2.desc": "تدريب وتغذية مبنيان على هدفك وجدولك ونقطة انطلاقك.",
+    "step3.title": "متابعات أسبوعية", "step3.desc": "حوار حقيقي مع مدربك كل أسبوع — ما الذي ينجح، وما الذي يحتاج تعديلًا.",
+    "step4.title": "تتبع التقدم", "step4.desc": "القياسات والأداء والصور تُسجَّل وتُشارَك معك — مرئية دائمًا، وليست تخمينًا أبدًا.",
+    "coaches.eyebrow": "الأشخاص وراء الخطة", "coaches.title": "تعرف على المدربين", "coaches.photoLabel": "صورة — المدرب",
+    "coach1.badge": "فقدان الوزن", "coach1.years": "8 سنوات خبرة",
+    "coach2.badge": "القوة وبناء العضلات", "coach2.years": "5 سنوات خبرة",
+    "coach3.badge": "التغذية", "coach3.years": "5 سنوات خبرة",
+    "results.eyebrow": "نتائج حقيقية", "results.title": "دليل، لا وعود", "results.subtitle": "نماذج لنتائج أعضاء — أسماء وصور حقيقية تمت مشاركتها بموافقتهم.",
+    "results.photo1": "صورة — عضو أثناء التدريب", "results.photo2": "صورة — عضو أثناء التدريب", "results.photo3": "صورة — عضو أثناء التدريب",
+    "results.quote1": "«كان مدربي يعدّل الخطة كل أسبوع — لم أشعر يومًا أنني أخمّن.»",
+    "results.quote2": "«أول برنامج رأيت فيه أرقامي تتحسن فعليًا أسبوعًا بعد أسبوع.»",
+    "results.quote3": "«كينيه كانت صادقة منذ اليوم الأول — بلا عروض مبالغ فيها، فقط خطة ومدرب.»",
+    "inside.eyebrow": "شاهد قبل أن تزورنا", "inside.title": "داخل كينيه",
+    "inside.gal1": "صورة — أرضية الصالة", "inside.gal2": "أوزان حرة", "inside.gal3": "منطقة الكارديو", "inside.gal4": "منطقة التدريب الفردي", "inside.gal5": "غرف تبديل الملابس",
+    "schedule.title": "الجدول الأسبوعي", "schedule.note": "الصالة مفتوحة كل يوم من 4:00 صباحًا حتى 10:00 مساءً. أوقات الحصص أدناه للتوضيح فقط.",
+    "schedule.hClass": "الحصة", "schedule.hMon": "الإثنين", "schedule.hWed": "الأربعاء", "schedule.hFri": "الجمعة", "schedule.hSat": "السبت",
+    "schedule.r1": "حصة حرق الدهون", "schedule.r2": "أساسيات القوة", "schedule.r3": "مواعيد التدريب الفردي", "schedule.r4": "صالة مفتوحة", "schedule.byBooking": "بالحجز",
+    "pricing.eyebrow": "أسعار بسيطة وصريحة", "pricing.title": "اختر مستوى التدريب المناسب لك", "pricing.subtitle": "السعر المعروض هو كل ما تدفعه — بلا رسوم اشتراك، وبلا مفاجآت.",
+    "pricing.currency": "د.م.", "pricing.perMonth": "/شهر",
+    "plan1.name": "تدريب ذاتي", "plan1.tagline": "تدرب بمفردك، وفق الخطة.", "plan1.f1": "دخول كامل للصالة", "plan1.f2": "خطة تدريب أولية", "plan1.f3": "متابعة شهرية للتقدم", "plan1.cta": "اختر التدريب الذاتي",
+    "plan2.badge": "الأكثر طلبًا", "plan2.name": "بمرافقة مدرب", "plan2.tagline": "مدرب مخصص لك، أسبوعًا بعد أسبوع.", "plan2.f1": "كل ما يشمله التدريب الذاتي", "plan2.f2": "خطة مخصصة لفقدان الوزن أو بناء الكتلة", "plan2.f3": "متابعة أسبوعية مع المدرب", "plan2.f4": "إرشاد غذائي", "plan2.cta": "اختر هذه الخطة",
+    "plan3.name": "بريميوم فردي", "plan3.tagline": "كل حصة، بإشراف مدرب حضوريًا.", "plan3.f1": "كل ما يشمله خطة « بمرافقة مدرب »", "plan3.f2": "حصص فردية حضورية", "plan3.f3": "تواصل مباشر مع المدرب", "plan3.f4": "أولوية في الحجز", "plan3.cta": "اختر بريميوم",
+    "finalcta.title": "تعال وشاهد ذلك بنفسك.", "finalcta.subtitle": "تقييم مجاني مع مدرب حقيقي — بلا ضغط، وبلا التزام.", "finalcta.button": "احجز تقييمًا مجانيًا",
+    "footer.tagline": "صالة رياضية ومركز تدريب لكل من يريد فقدان الوزن أو بناء العضلات — مع مدرب حقيقي، ودون أي شيء مخفي.",
+    "footer.explore": "استكشف", "footer.visit": "زورونا", "footer.hours": "كل يوم، من 4:00 صباحًا حتى 10:00 مساءً",
+    "footer.copyright": "© 2026 كينيه. جميع الحقوق محفوظة.",
+    "booking.title": "احجز تقييمك المجاني", "booking.subtitle": "أخبرنا بما تبحث عنه واختر التاريخ والوقت المناسبين لك — لا حاجة للدفع أونلاين، يمكنك الدفع عند زيارتك.",
+    "booking.labelName": "الاسم الكامل", "booking.labelPhone": "رقم الهاتف", "booking.labelDate": "التاريخ المفضل", "booking.labelTime": "الوقت المفضل",
+    "booking.labelGoal": "ما الذي تبحث عنه؟", "booking.goalOption1": "فقدان الوزن / الحصول على جسم أنحف", "booking.goalOption2": "بناء العضلات / زيادة القوة", "booking.goalOption3": "لست متأكدًا بعد",
+    "booking.labelNotes": "هل هناك أي شيء آخر تود إخبارنا به؟ (اختياري)", "booking.submit": "إرسال الطلب",
+    "booking.directTitle": "تفضل التواصل معنا مباشرة؟", "booking.callUs": "اتصل بنا", "booking.emailUs": "راسلنا",
+    "booking.noPayment": "لا حاجة للدفع أونلاين — يمكنك الدفع عند زيارتك للصالة.",
+    "booking.successTitle": "تم استلام طلبك!", "booking.successSubtitle": "أظهر هذا التأكيد عند الاستقبال عند وصولك إلى كينيه.",
+    "booking.refLabel": "رمز المرجع", "booking.screenshotNote": "التقط صورة لهذا التأكيد واحتفظ بها كإثبات.", "booking.doneButton": "تم"
+  }
+};
+
+function setLang(lang) {
+  var dict = translations[lang];
+  if (!dict) return;
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+  document.documentElement.setAttribute('lang', lang);
+  document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+  try { localStorage.setItem('kinih_lang', lang); } catch (e) {}
+}
+
+function openBooking(context) {
+  document.getElementById('bookingContext').value = context || '';
+  document.getElementById('bookingFormView').style.display = '';
+  document.getElementById('bookingSuccessView').style.display = 'none';
+  document.getElementById('bookingOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeBooking() {
+  document.getElementById('bookingOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeBooking();
+});
+
+function generateBookingRef() {
+  var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  var code = '';
+  for (var i = 0; i < 6; i++) code += chars.charAt(Math.floor(Math.random() * chars.length));
+  return 'KINIH-' + code;
+}
+
+function submitBooking(e) {
+  e.preventDefault();
+  var name = document.getElementById('bookingName').value;
+  var phone = document.getElementById('bookingPhone').value;
+  var date = document.getElementById('bookingDate').value;
+  var time = document.getElementById('bookingTime').value;
+  var goal = document.getElementById('bookingGoal').value;
+  var notes = document.getElementById('bookingNotes').value;
+  var context = document.getElementById('bookingContext').value || 'General inquiry';
+  var ref = generateBookingRef();
+  var subject = 'Kinih Booking Request ' + ref + ' — ' + context;
+  var body = 'Reference: ' + ref + '\n' +
+    'Name: ' + name + '\n' +
+    'Phone: ' + phone + '\n' +
+    'Preferred date: ' + date + '\n' +
+    'Preferred time: ' + time + '\n' +
+    'Interested in: ' + context + '\n' +
+    'Goal: ' + goal + '\n' +
+    'Notes: ' + (notes || '-');
+  window.location.href = 'mailto:kinih@yahoo.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+
+  document.getElementById('bookingRefCode').textContent = ref;
+  document.getElementById('bookingSummaryName').textContent = name;
+  document.getElementById('bookingSummaryDate').textContent = date;
+  document.getElementById('bookingSummaryTime').textContent = time;
+  document.getElementById('bookingFormView').style.display = 'none';
+  document.getElementById('bookingSuccessView').style.display = '';
+  document.getElementById('bookingForm').reset();
+}
+
+(function() {
+  var saved = 'en';
+  try { saved = localStorage.getItem('kinih_lang') || 'en'; } catch (e) {}
+  setLang(saved);
+})();
+</script>
+
+</body>
+</html>
