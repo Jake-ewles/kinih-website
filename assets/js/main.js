@@ -26,11 +26,12 @@
       '<nav class="nav-links">' + navLinks() + '</nav>' +
       '<div class="nav-right">' +
         '<a href="tel:' + PHONE + '" class="nav-phone"><i class="fa-solid fa-phone"></i>' + PHONE_TXT + '</a>' +
+        '<a href="dashboard.html" class="nav-member" aria-label="Member area"><i class="fa-regular fa-circle-user"></i><span data-i18n="nav.member"></span></a>' +
         langSwitch +
         '<a href="contact.html" class="btn btn-fill" data-i18n="nav.cta"></a>' +
         '<button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>' +
       '</div></div></header>' +
-    '<div class="mobile-menu" id="mobileMenu"><a href="index.html" data-i18n="nav.home"' + (page === 'home' ? ' class="active"' : '') + '></a>' + navLinks() + langSwitch + '</div>';
+    '<div class="mobile-menu" id="mobileMenu"><a href="index.html" data-i18n="nav.home"' + (page === 'home' ? ' class="active"' : '') + '></a>' + navLinks() + '<a href="dashboard.html" data-i18n="nav.member"></a>' + langSwitch + '</div>';
   while (header.firstChild) document.body.insertBefore(header.firstChild, document.body.firstChild);
 
   // footer + call button
@@ -235,24 +236,17 @@
       err.classList.remove('show');
       var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789', id = 'KNH-';
       for (var i = 0; i < 6; i++) id += chars.charAt(Math.floor(Math.random() * chars.length));
-      var plan = join.querySelector('input[name="plan"]:checked').value;
-      var name = val('jFirst') + ' ' + val('jLast');
-      var body = [
-        'Member number: ' + id,
-        'Name: ' + name,
-        'Phone: ' + val('jPhone'),
-        'Email: ' + val('jEmail'),
-        'Plan: ' + plan,
-        'Wants to start: ' + (jStart.value || '-'),
-        'WhatsApp reminders: ' + (document.getElementById('jWa').checked ? 'yes' : 'no'),
-        'Language: ' + currentLang
-      ].join('\n');
-      var wa = 'https://wa.me/212645678594?text=' + encodeURIComponent('Hi Kinih, I just created my account. ' + id + ' / ' + name + ' / ' + plan);
+      var planKey = { 'Self-Guided': 'self', 'Coached': 'coach', 'Premium 1-on-1': 'premium' }[join.querySelector('input[name="plan"]:checked').value];
+      // no backend yet: dashboard.js builds the member area from this profile (demo mode, stored in this browser)
+      var profile = {
+        id: id, first: val('jFirst'), last: val('jLast'), phone: val('jPhone'), email: val('jEmail'),
+        plan: planKey, goal: document.getElementById('jGoal').value, start: jStart.value || '', wa: document.getElementById('jWa').checked
+      };
+      try { localStorage.setItem('kinih_new', JSON.stringify(profile)); } catch (err2) {}
       document.getElementById('joinWrap').innerHTML =
-        '<div class="success"><div class="ok"><i class="fa-solid fa-check"></i></div><h3>' + d['j.ok.t'].replace('{name}', esc(val('jFirst'))) + '</h3><p>' + d['j.ok.s'] + '</p>' +
-        '<div class="ref"><small>' + d['j.ok.id'] + '</small><b>' + id + '</b></div><p style="font-size:13px">' + d['j.ok.shot'] + '</p>' +
-        '<a href="' + wa + '" target="_blank" rel="noopener" class="btn btn-fill" style="margin-top:18px"><i class="fa-brands fa-whatsapp"></i> ' + d['j.ok.wa'] + '</a></div>';
-      window.location.href = 'mailto:kinih@yahoo.com?subject=' + encodeURIComponent('New member account ' + id) + '&body=' + encodeURIComponent(body);
+        '<div class="success"><div class="ok"><i class="fa-solid fa-check"></i></div><h3>' + d['j.ok.t'].replace('{name}', esc(val('jFirst'))) + '</h3><p>' + d['j.ok.go'] + '</p>' +
+        '<div class="ref"><small>' + d['j.ok.id'] + '</small><b>' + id + '</b></div></div>';
+      setTimeout(function () { window.location.href = 'dashboard.html'; }, 1400);
     });
   }
 })();

@@ -144,9 +144,9 @@ ar: {
 }
 };
 var form = {
-  en: { "nav.join":"Join", "f.plan":"Preferred plan", "f.coach":"Preferred coach", "f.any":"No preference" },
-  fr: { "nav.join":"S'inscrire", "f.plan":"Formule souhaitée", "f.coach":"Coach souhaité", "f.any":"Pas de préférence" },
-  ar: { "nav.join":"انضم", "f.plan":"الخطة المفضلة", "f.coach":"المدرب المفضل", "f.any":"بدون تفضيل" }
+  en: { "nav.join":"Join", "nav.member":"Member area", "f.plan":"Preferred plan", "f.coach":"Preferred coach", "f.any":"No preference" },
+  fr: { "nav.join":"S'inscrire", "nav.member":"Espace membre", "f.plan":"Formule souhaitée", "f.coach":"Coach souhaité", "f.any":"Pas de préférence" },
+  ar: { "nav.join":"انضم", "nav.member":"فضاء الأعضاء", "f.plan":"الخطة المفضلة", "f.coach":"المدرب المفضل", "f.any":"بدون تفضيل" }
 };
 Object.keys(extra).forEach(function (l) { Object.assign(T[l], extra[l], form[l]); });
 })();

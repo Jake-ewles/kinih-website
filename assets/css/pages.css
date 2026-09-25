@@ -214,3 +214,10 @@ html[lang="ar"] .hs h4{text-transform:none}
   .acc-body,.join-form{padding:20px 16px}
   .acc summary{font-size:16px;padding:16px 18px}
 }
+
+/* member area link in the header */
+.nav-member{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:#fff;padding:8px 12px;border:1px solid rgba(255,255,255,.2);border-radius:8px;transition:border-color .2s,color .2s}
+.nav-member i{color:var(--accent);font-size:16px}
+.nav-member:hover{border-color:var(--accent);color:var(--accent)}
+@media (max-width:1180px){.nav-member span{display:none}}
+@media (max-width:860px){.nav-member{display:none}}
