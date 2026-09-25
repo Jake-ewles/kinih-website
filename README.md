@@ -5,9 +5,9 @@ It's a portfolio project showing the kind of site I can build for a real local b
 It works in **English, French and Arabic** (with a full right-to-left layout), includes an in-browser FAQ chatbot, and has a demo member area.
 
 🔗 **Live demo:** https://teal-moxie-5860a0.netlify.app/
+![Uploading kinih home page.png…]()
 
-<!-- Add a screenshot of the home page as screenshot.png, then uncomment the line below -->
-<!-- ![Kinih home page](screenshot.png) -->
+
 
 ---
 
