@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en" dir="ltr" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact | Kinih Fitness & Coaching</title>
+<meta name="description" content="Book your free assessment at Kinih, 1034 Rue des Orangers, Aïn Sebaâ, Casablanca. Call +212 6 45 67 85 94. Open every day 4 AM to 10 PM.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800;900&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body data-page="contact">
+
+<section class="page-hero">
+  <div class="ph-bg" style="background-image:url('images/hero-training-floor.png')"></div>
+  <div class="container">
+    <div class="label" data-i18n="pg.ct.label"></div>
+    <h1 class="display" data-i18n="pg.ct.title"></h1>
+    <p data-i18n="pg.ct.sub"></p>
+    <div class="crumbs"><a href="index.html" data-i18n="crumb.home"></a> / <span data-i18n="nav.contact"></span></div>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3 data-i18n="ct.h"></h3>
+        <p data-i18n="ct.p"></p>
+        <div class="c-line big"><i class="fa-solid fa-phone"></i><a href="tel:+212645678594">+212 6 45 67 85 94</a></div>
+        <div class="c-line"><i class="fa-brands fa-whatsapp"></i><a href="https://wa.me/212645678594" target="_blank" rel="noopener">WhatsApp</a></div>
+        <div class="c-line"><i class="fa-solid fa-envelope"></i><a href="mailto:kinih@yahoo.com">kinih@yahoo.com</a></div>
+        <div class="c-line"><i class="fa-solid fa-location-dot"></i><span>1034 Rue des Orangers, Aïn Sebaâ, Casablanca</span></div>
+        <div class="hours-card">
+          <h4 data-i18n="hours.title"></h4>
+          <div><span data-i18n="hours.d"></span><b class="ltr" data-i18n="hours.h"></b></div>
+        </div>
+        <div class="areas"><span data-i18n="ct.areas"></span>
+          <ul><li>Sidi Bernoussi</li><li>Hay Mohammadi</li><li>Roches Noires</li><li>Sidi Moumen</li></ul>
+        </div>
+      </div>
+      <div id="formWrap">
+        <form id="bookingForm">
+          <div class="row">
+            <div class="field"><label for="fName" data-i18n="f.name"></label><input id="fName" required autocomplete="name"></div>
+            <div class="field"><label for="fPhone" data-i18n="f.phone"></label><input id="fPhone" type="tel" required autocomplete="tel" dir="ltr"></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="fGoal" data-i18n="f.goal"></label>
+              <select id="fGoal">
+                <option value="lose" data-i18n="f.g1"></option>
+                <option value="build" data-i18n="f.g2"></option>
+                <option value="unsure" data-i18n="f.g3"></option>
+              </select></div>
+            <div class="field"><label for="fDate" data-i18n="f.date"></label><input id="fDate" type="date" required></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="fPlan" data-i18n="f.plan"></label>
+              <select id="fPlan">
+                <option value="" data-i18n="f.any"></option>
+                <option value="Self-Guided" data-i18n="pl1.n"></option>
+                <option value="Coached" data-i18n="pl2.n"></option>
+                <option value="Premium 1-on-1" data-i18n="pl3.n"></option>
+              </select></div>
+            <div class="field"><label for="fCoach" data-i18n="f.coach"></label>
+              <select id="fCoach">
+                <option value="" data-i18n="f.any"></option>
+                <option value="Karim Ali">Karim Ali</option>
+                <option value="Hanao Ibhraim">Hanao Ibhraim</option>
+                <option value="Djelil Baba">Djelil Baba</option>
+              </select></div>
+          </div>
+          <div class="field"><label for="fMsg" data-i18n="f.msg"></label><textarea id="fMsg" rows="4"></textarea></div>
+          <button type="submit" class="btn btn-fill"><span data-i18n="f.submit"></span> <i class="fa-solid fa-arrow-right"></i></button>
+          <p class="form-note" data-i18n="f.note"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="map-sec">
+  <div class="container">
+    <div class="label" data-i18n="map.label"></div>
+    <h2 class="display h-sec" style="color:var(--dark-text)" data-i18n="map.title"></h2>
+    <div class="map"><iframe title="Kinih location map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Rue%20des%20Orangers%2C%20Ain%20Sebaa%2C%20Casablanca&z=15&output=embed"></iframe></div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/i18n-pages.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/chatbot.js"></script>
+</body>
+</html>

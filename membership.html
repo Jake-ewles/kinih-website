@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en" dir="ltr" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Join Kinih | Gym Membership in Aïn Sebaâ</title>
+<meta name="description" content="Join Kinih Fitness & Coaching in Aïn Sebaâ, Casablanca. Memberships from 300 MAD a month, free first assessment, open every day 4 AM to 10 PM. Create your account online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800;900&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body data-page="join">
+
+<section class="page-hero">
+  <div class="ph-bg" style="background-image:url('images/inside-free-weights.png')"></div>
+  <div class="container">
+    <div class="label" data-i18n="pg.join.label"></div>
+    <h1 class="display" data-i18n="pg.join.title"></h1>
+    <p data-i18n="pg.join.sub"></p>
+    <div class="crumbs"><a href="index.html" data-i18n="crumb.home"></a> / <span data-i18n="nav.join"></span></div>
+  </div>
+</section>
+
+<!-- MEMBERSHIP ACCORDION -->
+<section class="join-sec">
+  <div class="container">
+    <div class="center">
+      <div class="label" data-i18n="j.label"></div>
+      <h2 class="display h-sec" data-i18n="j.h"></h2>
+      <p class="sub" data-i18n="j.tag"></p>
+    </div>
+
+    <div class="acc">
+      <details>
+        <summary><i class="fa-solid fa-chevron-down"></i><span data-i18n="j.why"></span></summary>
+        <div class="acc-body">
+          <ul class="j-list">
+            <li><i class="fa-solid fa-check"></i><span data-i18n="j.why.1"></span></li>
+            <li><i class="fa-solid fa-check"></i><span data-i18n="j.why.2"></span></li>
+            <li><i class="fa-solid fa-check"></i><span data-i18n="j.why.3"></span></li>
+            <li><i class="fa-solid fa-check"></i><span data-i18n="j.why.4"></span></li>
+            <li><i class="fa-solid fa-check"></i><span data-i18n="j.why.5"></span></li>
+          </ul>
+        </div>
+      </details>
+
+      <details open id="join">
+        <summary><i class="fa-solid fa-chevron-down"></i><span data-i18n="j.price"></span></summary>
+        <div class="acc-body">
+          <p class="j-lead" data-i18n="j.price.lead"></p>
+          <ul class="j-list">
+            <li><i class="fa-solid fa-tag"></i><span data-i18n="j.d1"></span></li>
+            <li><i class="fa-solid fa-tag"></i><span data-i18n="j.d2"></span></li>
+            <li><i class="fa-solid fa-tag"></i><span data-i18n="j.d3"></span></li>
+            <li><i class="fa-solid fa-tag"></i><span data-i18n="j.d4"></span></li>
+          </ul>
+          <p class="j-small" data-i18n="j.d.note"></p>
+
+          <div class="know">
+            <h4><i class="fa-solid fa-circle-info"></i><span data-i18n="j.know.h"></span></h4>
+            <ul>
+              <li data-i18n="j.k1"></li>
+              <li data-i18n="j.k2"></li>
+              <li data-i18n="j.k3"></li>
+              <li data-i18n="j.k4"></li>
+              <li data-i18n="j.k5"></li>
+              <li data-i18n="j.k6"></li>
+            </ul>
+          </div>
+
+          <div id="joinWrap" class="join-form">
+            <form id="joinForm" novalidate>
+              <h3 data-i18n="j.f.h"></h3>
+              <div class="field"><label data-i18n="j.f.plan"></label>
+                <div class="plan-pick">
+                  <label class="pp"><input type="radio" name="plan" value="Self-Guided"><span><b data-i18n="pl1.n"></b><em><span class="ltr">300</span> <span data-i18n="cur"></span><span data-i18n="mo"></span></em></span></label>
+                  <label class="pp"><input type="radio" name="plan" value="Coached" checked><span><b data-i18n="pl2.n"></b><em><span class="ltr">500</span> <span data-i18n="cur"></span><span data-i18n="mo"></span></em></span></label>
+                  <label class="pp"><input type="radio" name="plan" value="Premium 1-on-1"><span><b data-i18n="pl3.n"></b><em><span class="ltr">1000</span> <span data-i18n="cur"></span><span data-i18n="mo"></span></em></span></label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="field"><label for="jFirst"><span data-i18n="j.f.first"></span> <i class="req">*</i></label><input id="jFirst" required autocomplete="given-name"></div>
+                <div class="field"><label for="jLast"><span data-i18n="j.f.last"></span> <i class="req">*</i></label><input id="jLast" required autocomplete="family-name"></div>
+              </div>
+              <div class="row">
+                <div class="field"><label for="jPhone"><span data-i18n="j.f.phone"></span> <i class="req">*</i></label><input id="jPhone" type="tel" required autocomplete="tel" dir="ltr" placeholder="06 00 00 00 00"></div>
+                <div class="field"><label for="jStart" data-i18n="j.f.start"></label><input id="jStart" type="date"></div>
+              </div>
+              <label class="tick"><input type="checkbox" id="jWa" checked><span data-i18n="j.f.wa"></span></label>
+              <div class="row">
+                <div class="field"><label for="jEmail"><span data-i18n="j.f.email"></span> <i class="req">*</i></label><input id="jEmail" type="email" required autocomplete="email" dir="ltr"></div>
+                <div class="field"><label for="jEmail2"><span data-i18n="j.f.email2"></span> <i class="req">*</i></label><input id="jEmail2" type="email" required autocomplete="off" dir="ltr"></div>
+              </div>
+              <div class="row">
+                <div class="field"><label for="jHuman"><span id="jHumanQ"></span> <i class="req">*</i></label><input id="jHuman" inputmode="numeric" required autocomplete="off" dir="ltr"></div>
+                <div class="field hp" aria-hidden="true"><label for="jWebsite">Website</label><input id="jWebsite" tabindex="-1" autocomplete="off"></div>
+              </div>
+              <label class="tick"><input type="checkbox" id="jAgree" required><span data-i18n="j.f.agree"></span></label>
+              <p class="j-err" id="jErr" role="alert"></p>
+              <button type="submit" class="btn btn-fill"><span data-i18n="j.f.submit"></span> <i class="fa-solid fa-arrow-right"></i></button>
+              <p class="form-note" data-i18n="j.f.note"></p>
+            </form>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary><i class="fa-solid fa-chevron-down"></i><span data-i18n="j.trial"></span></summary>
+        <div class="acc-body">
+          <p data-i18n="j.trial.p"></p>
+          <a href="contact.html" class="btn btn-dark"><span data-i18n="j.trial.btn"></span> <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </details>
+
+      <details>
+        <summary><i class="fa-solid fa-chevron-down"></i><span data-i18n="j.tour"></span></summary>
+        <div class="acc-body">
+          <p data-i18n="j.tour.p"></p>
+          <a href="https://wa.me/212645678594?text=Hi%20Kinih%2C%20I%27d%20like%20to%20book%20a%20tour%20of%20the%20gym." target="_blank" rel="noopener" class="btn btn-dark"><i class="fa-brands fa-whatsapp"></i> <span data-i18n="j.tour.btn"></span></a>
+        </div>
+      </details>
+
+      <details>
+        <summary><i class="fa-solid fa-chevron-down"></i><span data-i18n="j.loc"></span></summary>
+        <div class="acc-body">
+          <div class="c-line"><i class="fa-solid fa-location-dot"></i><span>1034 Rue des Orangers, Aïn Sebaâ, Casablanca</span></div>
+          <div class="c-line"><i class="fa-regular fa-clock"></i><span data-i18n="ct.hours"></span></div>
+          <div class="c-line"><i class="fa-solid fa-phone"></i><a href="tel:+212645678594" class="ltr">+212 6 45 67 85 94</a></div>
+          <a href="https://maps.google.com/?q=Rue%20des%20Orangers%2C%20Ain%20Sebaa%2C%20Casablanca" target="_blank" rel="noopener" class="btn btn-dark"><i class="fa-solid fa-map-location-dot"></i> <span data-i18n="j.loc.btn"></span></a>
+        </div>
+      </details>
+    </div>
+
+    <div class="bday" data-aos="fade-up">
+      <h3 class="display" data-i18n="j.bday.h"></h3>
+      <p data-i18n="j.bday.p"></p>
+    </div>
+    <p class="j-change" data-i18n="j.change"></p>
+  </div>
+</section>
+
+<!-- WHY + FAQ -->
+<section class="faq-sec">
+  <div class="container">
+    <div class="wj">
+      <h2 class="display h-sec" data-i18n="j.wj.h"></h2>
+      <p data-i18n="j.wj.p1"></p>
+      <p data-i18n="j.wj.p2"></p>
+      <p data-i18n="j.wj.p3"></p>
+    </div>
+    <div class="center" style="margin-top:70px">
+      <div class="label" data-i18n="faq.label"></div>
+      <h2 class="display h-sec" data-i18n="j.faq.title"></h2>
+    </div>
+    <div class="faq">
+      <details open><summary><span data-i18n="j.q1"></span><i class="fa-solid fa-plus"></i></summary><p data-i18n="j.a1"></p></details>
+      <details><summary><span data-i18n="j.q2"></span><i class="fa-solid fa-plus"></i></summary><p data-i18n="j.a2"></p></details>
+      <details><summary><span data-i18n="j.q3"></span><i class="fa-solid fa-plus"></i></summary><p data-i18n="j.a3"></p></details>
+      <details><summary><span data-i18n="j.q4"></span><i class="fa-solid fa-plus"></i></summary><p data-i18n="j.a4"></p></details>
+      <details><summary><span data-i18n="j.q5"></span><i class="fa-solid fa-plus"></i></summary><p data-i18n="j.a5"></p></details>
+      <details><summary><span data-i18n="j.q6"></span><i class="fa-solid fa-plus"></i></summary><p data-i18n="j.a6"></p></details>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION + STORY -->
+<section class="mission dots">
+  <div class="container mission-grid">
+    <div data-aos="fade-up">
+      <div class="label" data-i18n="j.mv.label"></div>
+      <h2 class="display h-sec" data-i18n="j.mv.h"></h2>
+      <p data-i18n="j.mv.p1"></p>
+      <p data-i18n="j.mv.p2"></p>
+      <p data-i18n="j.mv.p3"></p>
+      <a href="coaches.html" class="btn btn-fill"><span data-i18n="j.mv.btn"></span> <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div data-aos="fade-up" data-aos-delay="120">
+      <div class="label" data-i18n="j.st.label"></div>
+      <h2 class="display h-sec" data-i18n="j.st.h"></h2>
+      <p data-i18n="j.st.p1"></p>
+      <p data-i18n="j.st.p2"></p>
+      <p data-i18n="j.st.p3"></p>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS STRIP -->
+<section class="hours-strip">
+  <div class="hs"><h4 data-i18n="j.hr1.t"></h4><p data-i18n="hours.d"></p><b class="ltr" data-i18n="hours.h"></b></div>
+  <div class="hs accent"><h4 data-i18n="j.hr2.t"></h4><p data-i18n="j.hr2.d"></p><b data-i18n="j.hr2.h"></b></div>
+  <div class="hs"><h4 data-i18n="j.hr3.t"></h4><p data-i18n="j.hr3.d"></p><b><a href="tel:+212645678594" class="ltr">+212 6 45 67 85 94</a></b></div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/i18n-pages.js"></script>
+<script src="assets/js/i18n-join.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/chatbot.js"></script>
+</body>
+</html>
